@@ -45,12 +45,12 @@ def prophet_predict(Municipality,Municipality_train,Municipality_test):
     
     '''Predicts usage values using prophet model for given future dates then evaluates the results by visualizing '''
     # Preparing dataset for prophet model
-    M0_prophet = Municipality_train.reset_index()[["timestamp","usage"]]
-    M0_prophet.columns=["ds","y"]
+    Municipality_prophet = Municipality_train.reset_index()[["timestamp","usage"]]
+    Municipality_prophet.columns=["ds","y"]
     
     #Fitting the model
     model = Prophet()
-    model.fit(M0_prophet)
+    model.fit(Municipality_prophet)
 
     #Precidicting values
     future = pd.DataFrame(data = Municipality_test.index)
